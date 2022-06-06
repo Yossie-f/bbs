@@ -133,4 +133,12 @@ return [
             'rule-name' => 'custom-message',
         ],
     ],
+
+    'attributes' => [
+        'your_name' => '投稿者名',
+        'title' => '件名',
+        'body' => '本文',
+        '画像' => '画像',
+    ],
+
 ];

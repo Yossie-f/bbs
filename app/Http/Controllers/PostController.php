@@ -36,13 +36,21 @@ class PostController extends Controller
     // データの保存メソッド store
     public function store(Request $request)
     {
+        $inputs=$request->validate([
+            'your_name' => 'required|string|max:30',
+            'title'=>'required|max:50',
+            'body'=>'required|string|max:200',
+            'image'=>'image|max:1024',
+            'url' => 'url|nullable',
+        ]);
+
         $post = new Post;
         
         $post->user_id = auth()->user()->id;
         $post->post_name = $request->post_name;
         $post->title = $request->title;
         $post->body = $request->body;
-        // $post->image = $request->image;
+        $post->image = $request->image;
         $post->url = $request->url;
         $post->save();  //データを保存
 
