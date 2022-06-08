@@ -1,12 +1,9 @@
 <x-app-layout>  
-
+{{-- ヘッダースロット --}}
   <x-slot name="header">
-    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        投稿の新規作成
-    </h2>
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight">投稿の新規作成</h2>
     {{-- バリデーションによるエラー結果を表示 --}}
     <x-validation-errors class="mb-4" :errors="$errors" />
-        
     {{-- session('')でPostControllerのリダイレクト時にwithメソッドで送られてくる’message’を受け取る --}}
     <x-message :message="session('message')" />
     {{-- <x-amessage :message="session('message')" /> --}}
@@ -40,6 +37,13 @@
           <label for="image" class="font-semibold leading-none mt-4">画像 </label>
           <div>
             <input id="image" type="file" name="image">
+          </div>
+        </div>
+
+        <div class="w-full flex flex-col">
+          <label for="image" class="font-semibold leading-none mt-4">リンク</label>
+          <div>
+            <input id="url" type="url" name="url">
           </div>
         </div>
         

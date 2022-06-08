@@ -14,7 +14,14 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        //Postモデルに紐づいたテーブルのデータを全て取得し$postsに代入
+        // $posts = Post::all();
+        //Postモデルから、テーブルのデータを作成日の降順で並び替えてget()で取得する
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        //auth()でログイン中のユーザー情報を取得し$userに代入
+        $user = auth()->user();
+        //ルート名 post.index に、取得した情報をompactメソッドで、連想配列として渡す
+        return view('post.index', compact('posts', 'user'));
     }
 
     /**
@@ -56,7 +63,7 @@ class PostController extends Controller
         if(request('image')){
             //リクエストパラメータimageから、getClientOriginalName()メソッド でファイルの名前を取得し$originalNameに代入。
             $originalName = request()->file('image')->getClientOriginalName();
-            //originalNameの先頭に'日付_'をくっつけて$nameに代入
+            //originalNameの先頭に'日付_時分秒_'をくっつけて$nameに代入
             $name = date('Ymd_His'). '_'. $originalName;
             //リクエストで送られてきたimageファイルを、move()メソッド で指定の場所へ、$nameの名前で保存する。
             request()->file('image')->move('storage/images', $name);
