@@ -36,24 +36,36 @@ class PostController extends Controller
     // データの保存メソッド store
     public function store(Request $request)
     {
-        $inputs=$request->validate([
-            'your_name' => 'required|string|max:30',
+        //リクエストパラメータごとにバリデーションの設定
+        $inputs = $request->validate([
+            'post_name' => 'required|string|max:30',
             'title'=>'required|max:50',
             'body'=>'required|string|max:200',
-            'image'=>'image|max:1024',
+            'image'=>'image|max:10240',
             'url' => 'url|nullable',
         ]);
-
+        // 投稿のレコードとなるPostクラスを作成
         $post = new Post;
-        
+        //Postクラスのフィールドにリクエストパラメータを代入
         $post->user_id = auth()->user()->id;
         $post->post_name = $request->post_name;
         $post->title = $request->title;
         $post->body = $request->body;
-        $post->image = $request->image;
         $post->url = $request->url;
-        $post->save();  //データを保存
-
+        //画像ファイルの保存処理(if文で、画像ファイルがある場合だけ処理する)
+        if(request('image')){
+            //リクエストパラメータimageから、getClientOriginalName()メソッド でファイルの名前を取得し$originalNameに代入。
+            $originalName = request()->file('image')->getClientOriginalName();
+            //originalNameの先頭に'日付_'をくっつけて$nameに代入
+            $name = date('Ymd_His'). '_'. $originalName;
+            //リクエストで送られてきたimageファイルを、move()メソッド で指定の場所へ、$nameの名前で保存する。
+            request()->file('image')->move('storage/images', $name);
+            //$nameのファイル名を、データベースのpostテーブルのimageカラムへ保存する。
+            $post->image = $name;
+        }
+        //データを保存
+        $post->save();  
+        //ビューの投稿作成画面(create)に戻り、withでセッションへmessageという名前で文字列を格納する。
         return redirect()->route('post.create')->with('message', '投稿を作成しました。');
     }
 

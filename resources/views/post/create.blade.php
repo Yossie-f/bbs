@@ -4,7 +4,7 @@
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
         投稿の新規作成
     </h2>
-
+    {{-- バリデーションによるエラー結果を表示 --}}
     <x-validation-errors class="mb-4" :errors="$errors" />
         
     {{-- session('')でPostControllerのリダイレクト時にwithメソッドで送られてくる’message’を受け取る --}}
@@ -19,8 +19,8 @@
         @csrf
         <div class="md:flex items-center mt-8">
           <div class="w-full flex flex-col">
-            <label for="title" class="font-semibold leading-none mt-4">投稿者名</label>
-            <input type="text" name="post_name" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="post_name" placeholder="投稿者名を入力" value="{{old('your_name')}}">
+            <label for="post_name" class="font-semibold leading-none mt-4">投稿者名</label>
+            <input type="text" name="post_name" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="post_name" placeholder="投稿者名を入力" value="{{old('post_name')}}">
           </div>
         </div>
 
