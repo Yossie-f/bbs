@@ -15,12 +15,15 @@
                 {{-- diffForHumans()メソッド：今の時間から逆算した時間を表示する。対象にアロー演算子をつけ表示形式を変更している--}}
                 <p>投稿者：{{$post->user->name}} ・ 投稿名：{{$post->post_name}} ・ 日時：{{$post->created_at->diffForHumans()}}</p>
               </div>
-              <h1 class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer">{{$post->title}}</h1>
+              <h1 class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer float-left pt-4">
+                {{-- タイトル表示部分をアンカータグとし、遷移先はpost.showルート、リクエストパラメータとして$postを渡す --}}
+                <a href="{{route('post.show', $post)}}">{{$post->title}}</a> 
+              </h1>
               <hr class="w-full">
               <p class="mt-4 text-gray-600 py-4">{{$post->body}}</p>
               @if (!empty($post->url))
                 <hr class="w-full">
-                <h1>URL:{{$post->url}}</h1>  
+                <h1 class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer float-left pt-4">URL:<a href="{{$post->url}}" style="color:rgb(86, 160, 160);">{{$post->url}}</a></h1>  
               @endif
             </div>
           </div>

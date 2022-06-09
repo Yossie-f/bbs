@@ -20,7 +20,7 @@ class PostController extends Controller
         $posts = Post::orderBy('created_at', 'desc')->get();
         //auth()でログイン中のユーザー情報を取得し$userに代入
         $user = auth()->user();
-        //ルート名 post.index に、取得した情報をompactメソッドで、連想配列として渡す
+        //ルート名 post.index に、取得した情報をcompactメソッドで、連想配列として渡す
         return view('post.index', compact('posts', 'user'));
     }
 
@@ -82,9 +82,9 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Post $post)  //引数にPostクラスの$postを受け取る
     {
-        //
+        return view('post.show', compact('post')); //showのビューにpostの情報を渡す
     }
 
     /**

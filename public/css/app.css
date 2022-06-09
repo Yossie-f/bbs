@@ -619,6 +619,9 @@ select {
 .z-50 {
   z-index: 50;
 }
+.float-left {
+  float: left;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -702,9 +705,6 @@ select {
 .h-16 {
   height: 4rem;
 }
-.h-10 {
-  height: 2.5rem;
-}
 .h-4 {
   height: 1rem;
 }
@@ -777,6 +777,9 @@ select {
 }
 .cursor-default {
   cursor: default;
+}
+.cursor-pointer {
+  cursor: pointer;
 }
 .list-inside {
   list-style-position: inside;
@@ -937,6 +940,14 @@ select {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
 }
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -948,14 +959,6 @@ select {
 .py-12 {
   padding-top: 3rem;
   padding-bottom: 3rem;
-}
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-}
-.py-8 {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
 }
 .pl-3 {
   padding-left: 0.75rem;
@@ -1214,6 +1217,10 @@ select {
 .hover\:text-gray-700:hover {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+.hover\:underline:hover {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
 }
 .hover\:shadow-2xl:hover {
   --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
