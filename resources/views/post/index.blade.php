@@ -9,7 +9,7 @@
     @foreach ($posts as $post)
       <div class="mx-4 sm:p-8">
         <div class="mt-4">
-          <div class="bg-white w-full rounded-2xl px-10 py-8 shadow-lg hover:shadow-2xl transition duration-500">
+          <div class="bg-white w-full rounded-2xl px-10 py-12 shadow-lg hover:shadow-2xl transition duration-500">
             <div class="mt-4">
               <div class="text-sm font-semibold flex flex-row-reverse">
                 {{-- diffForHumans()メソッド：今の時間から逆算した時間を表示する。対象にアロー演算子をつけ表示形式を変更している--}}
@@ -18,6 +18,7 @@
               <h1 class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer float-left pt-4">
                 {{-- タイトル表示部分をアンカータグとし、遷移先はpost.showルート、リクエストパラメータとして$postを渡す --}}
                 <a href="{{route('post.show', $post)}}">{{$post->title}}</a> 
+                {{-- パラメータの$postにはpostのid番号が入っている --}}
               </h1>
               <hr class="w-full">
               <p class="mt-4 text-gray-600 py-4">{{$post->body}}</p>

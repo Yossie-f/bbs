@@ -73,7 +73,7 @@ class PostController extends Controller
         //データを保存
         $post->save();  
         //ビューの投稿作成画面(create)に戻り、withでセッションへmessageという名前で文字列を格納する。
-        return redirect()->route('post.create')->with('message', '投稿を作成しました。');
+        return redirect()->route('post.show', $post)->with('message', '投稿を作成しました。');
     }
 
     /**
@@ -95,7 +95,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('post.edit', compact('post'));
     }
 
     /**
@@ -107,7 +107,35 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+         //リクエストパラメータごとにバリデーションの設定
+         $inputs = $request->validate([
+            'post_name' => 'required|string|max:30',
+            'title'=>'required|max:50',
+            'body'=>'required|string|max:200',
+            'image'=>'image|max:10240',
+            'url' => 'url|nullable',
+        ]);
+        //Postクラスのフィールドにリクエストパラメータを代入
+        // $post->user_id = auth()->user()->id;
+        $post->post_name = $request->post_name;
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->url = $request->url;
+        //画像ファイルの保存処理(if文で、画像ファイルがある場合だけ処理する)
+        if(request('image')){
+            //リクエストパラメータimageから、getClientOriginalName()メソッド でファイルの名前を取得し$originalNameに代入。
+            $originalName = request()->file('image')->getClientOriginalName();
+            //originalNameの先頭に'日付_時分秒_'をくっつけて$nameに代入
+            $name = date('Ymd_His'). '_'. $originalName;
+            //リクエストで送られてきたimageファイルを、move()メソッド で指定の場所へ、$nameの名前で保存する。
+            request()->file('image')->move('storage/images', $name);
+            //$nameのファイル名を、データベースのpostテーブルのimageカラムへ保存する。
+            $post->image = $name;
+        }
+        //データを保存
+        $post->save();  
+        //ビューの投稿詳細画面(show.blade)に戻り、$post(postsテーブルのid)と、withでセッションmessageへ文字列を格納しリダイレクト先に渡す
+        return redirect()->route('post.show', $post)->with('message', '投稿を変更しました。');
     }
 
     /**
