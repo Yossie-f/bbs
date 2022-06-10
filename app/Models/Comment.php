@@ -5,19 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Comment extends Model
 {
     use HasFactory;
 
-    // fillable = 充填可能
-    //フォームからテーブルに入力する項目を配列で用意
     protected $fillable = [
         'user_id',
-        'post_name',
-        'title',
+        'post_id',
+        'comment_name',
         'body',
-        'image',
-        'url',
     ];
 
     //usersテーブルとのリレーションメソッド user()
@@ -26,8 +22,9 @@ class Post extends Model
         return $this->belongsTo(User::class);   
     }
 
-    //commentsテーブルとのリレーションメソッド comments()
-    public function comments(){
-        return $this->hasMany(Comment::class);
+    //postsテーブルとのリレーションメソッド user()
+    public function post(){
+        //post : comment = 1 : 多
+        return $this->belongsTo(Post::class);   
     }
 }

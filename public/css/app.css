@@ -902,9 +902,9 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(220 252 231 / var(--tw-bg-opacity));
 }
-.bg-green-300 {
+.bg-green-200 {
   --tw-bg-opacity: 1;
-  background-color: rgb(134 239 172 / var(--tw-bg-opacity));
+  background-color: rgb(184 239 172 / var(--tw-bg-opacity));
 }
 .bg-teal-700 {
   --tw-bg-opacity: 1;
