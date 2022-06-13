@@ -15,6 +15,7 @@
                 {{-- diffForHumans()メソッド：今の時間から逆算した時間を表示する。対象にアロー演算子をつけ表示形式を変更している--}}
                 <p>投稿者：{{$post->user->name}} ・ 投稿名：{{$post->post_name}} ・ 日時：{{$post->created_at->diffForHumans()}}</p>
               </div>
+              
               <h1 class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer float-left pt-4">
                 {{-- タイトル表示部分をアンカータグとし、遷移先はpost.showルート、リクエストパラメータとして$postを渡す --}}
                 <a href="{{route('post.show', $post)}}">{{$post->title}}</a> 
@@ -26,6 +27,19 @@
                 <hr class="w-full">
                 <h1 class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer float-left pt-4">URL:<a href="{{$post->url}}" style="color:rgb(86, 160, 160);">{{$post->url}}</a></h1>  
               @endif
+              
+              <hr class="w-full mb-2 pt-8">
+              @if($post->comments->count())
+                <span class="badge"> 
+                  返信 {{ $post->comments->count() }}件
+                </span>
+              @else
+                <span>コメントはまだありません。</span>
+              @endif
+              <a href="{{route('post.show', $post)}}" style="color:white;">
+                <x-button class="float-right" >コメントする</x-button>
+              </a>
+
             </div>
           </div>
         </div>

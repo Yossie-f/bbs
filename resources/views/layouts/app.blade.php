@@ -12,6 +12,8 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        {{-- 投稿一覧画面の投稿ごとにコメント件数を表示するcss --}}
+        <link rel="stylesheet" href="{{ asset('css/forum.css') }}" >    
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>

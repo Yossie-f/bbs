@@ -1,0 +1,9 @@
+.badge{
+  display: #fff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 1rem;
+  font-size: 0.6rem;
+  text-align: nowrap;
+  background-color: rgb(50, 149, 50);
+  color: snow;
+}
