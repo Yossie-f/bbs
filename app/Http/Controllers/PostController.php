@@ -146,7 +146,9 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $post->delete();
+        $post->comments()->delete(); //投稿(Post)削除時にコメント(Comment)も削除する
+        $post->delete();            //投稿(Post)を削除する
+        //削除後はindexページにリダイレクト。セッションメッセージを合わせて送る。
         return redirect()->route('post.index')->with('message', '投稿を削除しました');
     }
 }
