@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 
@@ -26,3 +27,5 @@ require __DIR__.'/auth.php';
 
 
 Route::resource('post', PostController::class);
+
+Route::resource('comment', CommentController::class);
