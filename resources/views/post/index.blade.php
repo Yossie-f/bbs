@@ -22,7 +22,8 @@
                 {{-- パラメータの$postにはpostのid番号が入っている --}}
               </h1>
               <hr class="w-full">
-              <p class="mt-4 text-gray-600 py-4">{{$post->body}}</p>
+              {{-- 本文(body)表示部 : 100字以上は...で非表示にする --}}
+              <p class="mt-4 text-gray-600 py-4">{{Str::limit($post->body, 100, '...')}}</p>
               @if (!empty($post->url))
                 <hr class="w-full">
                 <h1 class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer float-left pt-4">URL:<a href="{{$post->url}}" style="color:rgb(86, 160, 160);">{{$post->url}}</a></h1>  

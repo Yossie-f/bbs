@@ -111,7 +111,7 @@ class PostController extends Controller
          $inputs = $request->validate([
             'post_name' => 'required|string|max:30',
             'title'=>'required|max:50',
-            'body'=>'required|string|max:200',
+            'body'=>'required|string|max:1000',
             'image'=>'image|max:10240',
             'url' => 'url|nullable',
         ]);
