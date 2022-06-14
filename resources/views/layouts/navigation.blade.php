@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('post.mypost')" :active="request()->routeIs('post.mypost')">
                         My投稿
                     </x-nav-link>
+                    <x-nav-link :href="route('post.mycomment')" :active="request()->routeIs('post.mycomment')">
+                        コメントした投稿
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -77,6 +80,9 @@
             </x-responsive-nav-link>
             <x-nav-link :href="route('post.mypost')" :active="request()->routeIs('post.mypost')">
                 My投稿
+            </x-nav-link>
+            <x-nav-link :href="route('post.mycomment')" :active="request()->routeIs('post.mycomment')">
+                コメントした投稿
             </x-nav-link>
         </div>
 

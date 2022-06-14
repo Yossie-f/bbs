@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;            //Postモデルクラスをインポート
+use App\Models\Comment;         
 use Illuminate\Http\Request;    //Requestクラスをインポート
 
 class PostController extends Controller
@@ -152,9 +153,18 @@ class PostController extends Controller
         return redirect()->route('post.index')->with('message', '投稿を削除しました');
     }
 
+    // 自分の投稿だけ表示させるメソッド
     public function mypost(){
         $user=auth()->user()->id;
         $posts=Post::where('user_id', $user)->orderBy('created_at', 'desc')->get();
         return view('post.mypost', compact('posts'));
+    }
+
+    //自分がコメントした投稿だけ表示させるメソッド
+    public function mycomment(){
+        $user=auth()->user()->id;
+        $comments=Comment::where('user_id', $user)->orderBy('created_at', 'desc')->get();
+        $comments=$comments->unique('post_id');
+        return view('post.mycomment', compact('comments'));
     }
 }

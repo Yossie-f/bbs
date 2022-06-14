@@ -6,11 +6,15 @@
 
   {{-- 投稿一覧表示用のコード --}}
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    @if(count($posts) == 0)
-      <p class="mt-4">投稿はまだありません。</p>
+    @if(count($comments) == 0)
+      <p class="mt-4">あなたはまだコメントしていません。</p>
     @else
-    <p>投稿は{{count($posts)}}件です</p>
-    @foreach ($posts as $post)
+    <p>あなたがコメントした投稿は{{count($comments)}}件です</p>
+    {{-- commentsから、同じpost_idのコメントは最初の1回しか取得しない --}}
+    @foreach ($comments as $comment) 
+    @php
+      $post=$comment->post;
+    @endphp
       <div class="mx-4 sm:p-8">
         <div class="mt-4">
           <div class="bg-white w-full rounded-2xl px-10 py-12 shadow-lg hover:shadow-2xl transition duration-500">
