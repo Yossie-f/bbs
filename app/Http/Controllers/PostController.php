@@ -151,4 +151,10 @@ class PostController extends Controller
         //削除後はindexページにリダイレクト。セッションメッセージを合わせて送る。
         return redirect()->route('post.index')->with('message', '投稿を削除しました');
     }
+
+    public function mypost(){
+        $user=auth()->user()->id;
+        $posts=Post::where('user_id', $user)->orderBy('created_at', 'desc')->get();
+        return view('post.mypost', compact('posts'));
+    }
 }
