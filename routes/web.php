@@ -16,8 +16,8 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('toppage');
+})->name('toppage');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

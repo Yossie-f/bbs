@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('post.index') }}">
+                    <a href="{{ route('toppage') }}">
                         <img src="{{asset('logo/22761504.png')}}" style="max-height: 60px;">
                     </a>
                 </div>
