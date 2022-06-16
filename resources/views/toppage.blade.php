@@ -20,10 +20,12 @@
                     <x-button class="btn-set bg-green-600">Myページ</x-button>
                   </a>
                   
-                </div>
-                <div class="flex justify-center mt-8">
-                  <x-button class="btn-set bg-gray-100">お問合せはこちら</x-button>
-                </div>
+              </div>
+              <div class="flex w-full justify-center mt-8 md:justify-start pb-24 lg:pb-0 fade-in">
+                <a href="{{route('contact.create')}}">
+                  <x-button class="btn-set-gray">お問合せはこちら</x-button>
+                </a>
+              </div>
           </div>
           {{-- 右側 --}}
           <div class="w-full xl:w-3/5 py-6 overflow-y-hidden">
@@ -35,7 +37,7 @@
               <P> ここは色々いれてください。</p>
           </div>
           <!--フッタ-->
-          <div class="w-full pt-10 pb-6 text-sm md:text-left fade-in">
+          <div class="w-full pt-10 pb-6 text-sm md:text-left fade-in" style="background-color: rgb(120, 180, 240)">
               <p class="text-gray-500 text-center">@2022 このWebサイトは個人が運営する非公式のサイトであり、ポリテクセンター滋賀は運営上一切の関連はありません。</p>
               <p class="text-gray-500 text-center">Sneakly</p>
           </div>
