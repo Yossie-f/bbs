@@ -17,8 +17,8 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body>
-        <div class="font-sans text-gray-900 antialiased">
-            <div class="w-full container mx-zuto p-6" style="background-color: rgb(120, 180, 240)">
+        <div class=" w-full font-sans text-gray-900 antialiased">
+            <div class="w-full container mx-auto p-6" style="background-color: rgb(120, 180, 240)">
                 <div class="w-full flex items-center justify-between">
                     <h1>guest.blade.php</h1>
                     <a href="{{route('toppage')}}">
