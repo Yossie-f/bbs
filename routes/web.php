@@ -4,6 +4,7 @@ use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ContactFormController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,3 +47,6 @@ Route::resource('post', PostController::class);
 
 //コメント
 Route::resource('comment', CommentController::class);
+
+//ユーザー一覧
+Route::get('profile.index', [ProfileController::class, 'index'])->name('profile.index');
