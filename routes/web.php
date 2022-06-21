@@ -34,8 +34,8 @@ require __DIR__.'/auth.php';
 // });
 Route::controller(ContactFormController::class)->group(function(){
     // Route::get('contact/index', 'index')->name('contact.index');
-    Route::get('contact/create', 'create')->name('contact.create');
-    Route::post('contact/store', 'store')->name('contact.store');
+    Route::get('contact/create', 'create')->name('contact.create')->middleware('guest');
+    Route::post('contact/store', 'store')->name('contact.store')->middleware('guest');
 });
 
 //自分の投稿,コメント
@@ -48,5 +48,7 @@ Route::resource('post', PostController::class);
 //コメント
 Route::resource('comment', CommentController::class);
 
-//ユーザー一覧
-Route::get('profile.index', [ProfileController::class, 'index'])->name('profile.index');
+//ユーザー一覧(管理者用画面)
+Route::middleware(['can:admin'])->group(function(){
+    Route::get('profile.index', [ProfileController::class, 'index'])->name('profile.index');
+});

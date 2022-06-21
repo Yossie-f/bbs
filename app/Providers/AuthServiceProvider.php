@@ -25,6 +25,15 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        //Gateクラスのdefineメソッド（）
+        Gate::define('admin', function($user){ //$userはログインユーザー
+            foreach($user->roles as $role){
+                if($role->role=='admin'){
+                    //ユーザーのroleが’admin’であればtrueを返し、ゲートを通ることができる。
+                    return true;
+                }
+            }
+            return false; //adminでなければfalseを返す。
+        });
     }
 }

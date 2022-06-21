@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;            //Postモデルクラスをインポート
 use App\Models\Comment;         
 use Illuminate\Http\Request;    //Requestクラスをインポート
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -32,6 +33,7 @@ class PostController extends Controller
      */
     public function create()
     {
+        // Gate::authorize('admin');  //adminユーザーしかcreateメソッドを使用しないように制限するコード
         return view("post.create");
     }
 
