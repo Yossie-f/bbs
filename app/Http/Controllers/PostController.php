@@ -26,6 +26,7 @@ class PostController extends Controller
         return view('post.index', compact('posts', 'user'));
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -36,6 +37,7 @@ class PostController extends Controller
         // Gate::authorize('admin');  //adminユーザーしかcreateメソッドを使用しないように制限するコード
         return view("post.create");
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -79,6 +81,7 @@ class PostController extends Controller
         return redirect()->route('post.show', $post)->with('message', '投稿を作成しました。');
     }
 
+
     /**
      * Display the specified resource.
      *
@@ -90,6 +93,7 @@ class PostController extends Controller
         return view('post.show', compact('post')); //showのビューにpostの情報を渡す
     }
 
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -98,8 +102,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        $this->authorize('update', $post);
         return view('post.edit', compact('post'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -110,6 +116,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        $this->authorize('update', $post);
          //リクエストパラメータごとにバリデーションの設定
          $inputs = $request->validate([
             'post_name' => 'required|string|max:30',
@@ -141,6 +148,7 @@ class PostController extends Controller
         return redirect()->route('post.show', $post)->with('message', '投稿を変更しました。');
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
@@ -149,11 +157,13 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $this->authorize('delete', $post);
         $post->comments()->delete(); //投稿(Post)削除時にコメント(Comment)も削除する
         $post->delete();            //投稿(Post)を削除する
         //削除後はindexページにリダイレクト。セッションメッセージを合わせて送る。
         return redirect()->route('post.index')->with('message', '投稿を削除しました');
     }
+
 
     // 自分の投稿だけ表示させるメソッド
     public function mypost(){
@@ -161,6 +171,7 @@ class PostController extends Controller
         $posts=Post::where('user_id', $user)->orderBy('created_at', 'desc')->get();
         return view('post.mypost', compact('posts'));
     }
+
 
     //自分がコメントした投稿だけ表示させるメソッド
     public function mycomment(){

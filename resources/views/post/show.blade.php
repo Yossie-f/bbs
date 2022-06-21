@@ -19,12 +19,16 @@
             <hr class="w-full">
           </div>
           <div class="flex justify-end mt-4">
-            <a href="{{route('post.edit', $post)}}"><x-button class="bg-teal-700 float-right">編集</x-button></a>
+            @can('update', $post)
+             <a href="{{route('post.edit', $post)}}"><x-button class="bg-teal-700 float-right">編集</x-button></a>
+            @endcan
+            @can('delete', $post)
             <form method="post" action="{{route('post.destroy', $post)}}">
               @csrf
               @method('delete')
               <x-button class="bg-red-700 float-right ml-4" onClick="return confirm('本当に削除しますか？');">削除</x-button>
             </form>
+            @endcan
           </div>
 
           <div>
