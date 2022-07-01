@@ -69,6 +69,7 @@ class PostPolicy
         if($user->id==$post->user_id){
             return true;
         }
+    
         //ログインユーザーのroleがadminならばtrueを返し動作を許可する
         foreach($user->roles as $role){
             if($role->role=='admin'){
