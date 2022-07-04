@@ -11,4 +11,8 @@ class ProfileController extends Controller
         $users=User::all();  //allメソッドで全てのユーザーを$userに格納
         return view('profile.index', compact('users'));
     }
+
+    public function edit(User $user){
+        return view('profile.edit', compact('user'));
+    }
 }
