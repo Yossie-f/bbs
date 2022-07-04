@@ -39,7 +39,7 @@
                 <x-input id="password" class="block mt-1 w-full"
                                 type="password"
                                 name="password"
-                                required autocomplete="new-password" />
+                                autocomplete="new-password" />
             </div>
 
             <!-- Confirm Password -->
@@ -48,7 +48,7 @@
 
                 <x-input id="password_confirmation" class="block mt-1 w-full"
                                 type="password"
-                                name="password_confirmation" required />
+                                name="password_confirmation" />
             </div>
 
             <div class="flex items-center justify-end mt-4">
