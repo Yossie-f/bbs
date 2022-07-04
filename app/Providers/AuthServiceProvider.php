@@ -15,6 +15,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
         App\Models\Post::class=>App\Policies\PostPolicy::class,  //Postモデルに対してPostPolicyクラスを設定する
+        App\Models\User::class=>App\Policies\UserPolicy::class,  //UserモデルにUserPolicyクラスを設定
     ];
 
     /**
@@ -34,7 +35,7 @@ class AuthServiceProvider extends ServiceProvider
                     return true;
                 }
             }
-            return false; //adminでなければfalseを返す。
+            return abort(403); //adminでなければ403ページを返す。
         });
     }
 }
