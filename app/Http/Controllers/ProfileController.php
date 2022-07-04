@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Hash;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Storage;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -35,10 +35,14 @@ class ProfileController extends Controller
         if(!isset($inputs['password'])){    //パスワードが新たに設定されなければ
             unset($inputs['password']);     //パスワードは空の状態(unset)とする
         }else{
-            $inputs['password'] = Hash::make($inputs['password'])->save();    //パスワードが入力されていればハッシュ化する
+            $inputs['password']=Hash::make($inputs['password']);    //パスワードが入力されていればハッシュ化する
         }
 
         if(isset($inputs['avatar'])) {
+            if($user->avatar!=='default_user.png'){
+                $oldAvatar='public/avatar/'.$user->avatar;
+                Storage::delete($oldAvatar);
+            }
             $name=request()->file( 'avatar')->getClientOriginalName();
             $avatar=date('Ymd_His').'_'.$name;
             request()->file( 'avatar')->storeAs('public/avatar', $avatar);
@@ -46,6 +50,5 @@ class ProfileController extends Controller
         }
         $user->update($inputs);
         return back()->with('message', '情報を更新しました');
-    }
     }
 }
