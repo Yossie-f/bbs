@@ -51,6 +51,8 @@ class PostPolicy
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
+
+    //投稿内容を変更できるのは投稿者だけに制限するルール
     public function update(User $user, Post $post) //引数(ログインユーザー, コントローラーから受け取るPostモデルクラス)
     {
         return $user->id==$post->user_id; //ログインユーザーのidが、投稿者(post)のidと同じというルールを設定
@@ -63,6 +65,8 @@ class PostPolicy
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
+
+     //投稿を削除できるのは投稿者本人かadminユーザーのみとする
     public function delete(User $user, Post $post)
     {
         //ログインユーザーidが投稿idと等しければtrueを返し動作を許可する

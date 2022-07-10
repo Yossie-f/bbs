@@ -10,7 +10,7 @@
       <div class="my-6">
           <table class="text-left w-full border-collapse mt-8"> 
               <tr class="bg-green-600">
-                  <th class="p-3 text-left text-white">＃</th>
+                  <th class="p-3 text-left text-white">ID</th>
                   <th class="p-3 text-left text-white">名前</th>
                   <th class="p-3 text-left text-white">Email</th>
               </tr>

@@ -34,7 +34,7 @@ Route::controller(ContactFormController::class)->group(function(){
     Route::post('contact/store', 'store')->name('contact.store')->middleware('guest');
 });
 
-//
+//ログイン後のユーザー画面
 Route::middleware(['verified'])->group(function(){
     //自分の投稿,コメント
     Route::get('post/mypost', [PostController::class, 'mypost'])->name('post.mypost');
@@ -44,11 +44,14 @@ Route::middleware(['verified'])->group(function(){
     //コメント
     Route::resource('comment', CommentController::class);
     
+    // //ユーザー情報の更新画面
     Route::get('profile/{user}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
 
     //ユーザー一覧(管理者用画面)
     Route::middleware(['can:admin'])->group(function(){
+        //ユーザー一覧を取得
         Route::get('profile.index', [ProfileController::class, 'index'])->name('profile.index');
+        //ユーザー削除のルート
     });
 });

@@ -5,7 +5,7 @@
           <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden ">
               <h1 class="my-4 text-3xl md:text-5xl text-blue-400 font-bold leading-tight text-center md:text-left slide-in-bottom-h1">Sneakly</h1>
               <p class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left slide-in-bottom-subtitle">
-                  ポリテク滋賀ICT科限定の掲示板サイトです。勉強や就活に関すること、趣味や息抜きに関すること、活発に情報共有して、より良い未来に繋げていきましょう。
+                  ポリテク滋賀ICT科の訓練生のための掲示板サイトです。勉強や就活に関すること、趣味や息抜きに関すること、活発に情報共有して、より良い未来に繋げていきましょう。
               </p>
           
               <p class="text-blue-400 font-bold pb-8 lg:pb-6 text-center md:text-left fade-in">
