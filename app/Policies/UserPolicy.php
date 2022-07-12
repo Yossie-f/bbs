@@ -50,6 +50,8 @@ class UserPolicy
      * @param  \App\Models\User  $model
      * @return \Illuminate\Auth\Access\Response|bool
      */
+    //※ポリシーファイル生成時にUserモデルファイルと紐づけてある。ここでの$modelは
+    //ログインユーザー（$user）のidと開いたページのユーザー情報($model)のidが一致したらtrue返す
     public function update(User $user, User $model)
     {
         if($user->id == $model->id){

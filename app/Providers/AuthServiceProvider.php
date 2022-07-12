@@ -13,9 +13,10 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
-        App\Models\Post::class=>App\Policies\PostPolicy::class,  //Postモデルに対してPostPolicyクラスを設定する
-        App\Models\User::class=>App\Policies\UserPolicy::class,  //UserモデルにUserPolicyクラスを設定
+        //Postモデルに対してPostPolicyクラスを設定する
+        App\Models\Post::class=>App\Policies\PostPolicy::class,  
+        //UserモデルにUserPolicyクラスを設定
+        App\Models\User::class=>App\Policies\UserPolicy::class,  
     ];
 
     /**
@@ -26,8 +27,7 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-        //Gateクラスのdefineメソッド（）
+        //Gateクラスのdefineメソッド
         Gate::define('admin', function($user){ //$userはログインユーザー
             foreach($user->roles as $role){
                 if($role->role=='admin'){

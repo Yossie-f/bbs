@@ -27,7 +27,7 @@ class ContactFormController extends Controller
         $inputs = $request->validate([
             'name' => 'required|string|max:30',
             'title'=>'required|max:50',
-            'text'=>'required|string|max:500',
+            'text'=>'required|string|max:1000',
             'email'=>'required|email|max:255',
         ]);
 

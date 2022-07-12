@@ -6,6 +6,7 @@ use App\Models\Post;            //Postモデルクラスをインポート
 use App\Models\Comment;         
 use Illuminate\Http\Request;    //Requestクラスをインポート
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage; //投稿画像削除のためにインポート
 
 class PostController extends Controller
 {
@@ -34,7 +35,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        // Gate::authorize('admin');  //adminユーザーしかcreateメソッドを使用しないように制限するコード
+        //adminユーザーしかcreateメソッドを使用しないように制限するコード
+        // Gate::authorize('admin'); 
         return view("post.create");
     }
 
@@ -159,7 +161,14 @@ class PostController extends Controller
     {
         $this->authorize('delete', $post);
         $post->comments()->delete(); //投稿(Post)削除時にコメント(Comment)も削除する
-        $post->delete();            //投稿(Post)を削除する
+        //投稿された画像をストレージから削除する
+        if(isset($post->image)){
+            $imageName = $post->image;
+            $image = 'public/images/'.$imageName;
+            Storage::delete($image);
+        }
+        //投稿(Post)を削除する
+        $post->delete();   
         //削除後はindexページにリダイレクト。セッションメッセージを合わせて送る。
         return redirect()->route('post.index')->with('message', '投稿を削除しました');
     }

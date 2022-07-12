@@ -97,6 +97,8 @@
             <x-nav-link :href="route('post.mycomment')" :active="request()->routeIs('post.mycomment')">
                 コメントした投稿
             </x-nav-link>
+            {{-- ゲート制限admin: ユーザーの
+                roleがadminならユーザー一覧を表示させる --}}
             @can('admin')
                 <x-nav-link :href="route('profile.index')" :active="request()->routeIs('profile.index')">
                     ユーザー一覧

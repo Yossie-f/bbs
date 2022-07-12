@@ -30,6 +30,7 @@ require __DIR__.'/auth.php';
 //問合せ
 Route::controller(ContactFormController::class)->group(function(){
     // Route::get('contact/index', 'index')->name('contact.index');
+    //ミドルウェアで
     Route::get('contact/create', 'create')->name('contact.create')->middleware('guest');
     Route::post('contact/store', 'store')->name('contact.store')->middleware('guest');
 });
@@ -48,7 +49,7 @@ Route::middleware(['verified'])->group(function(){
     Route::get('profile/{user}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
 
-    //ユーザー一覧(管理者用画面)
+    //ユーザー一覧(管理者用画面) : Gate'aadmin'でアクセス制限
     Route::middleware(['can:admin'])->group(function(){
         //ユーザー一覧を取得
         Route::get('profile.index', [ProfileController::class, 'index'])->name('profile.index');
