@@ -13,12 +13,30 @@
                   <th class="p-3 text-left text-white">ID</th>
                   <th class="p-3 text-left text-white">名前</th>
                   <th class="p-3 text-left text-white">Email</th>
+                  <th class="p-3 text-left text-white">アバター</th>
+                  <th class="p-3 text-left text-white">編集</th>
+                  <th class="p-3 text-left text-white">削除</th>
               </tr>
               @foreach($users as $user) 
               <tr class="bg-white">
                   <td class="border-gray-light border hover:bg-gray-100 p-3">{{$user->id}}</td>
                   <td class="border-gray-light border hover:bg-gray-100 p-3">{{$user->name}}</td>
                   <td class="border-gray-light border hover:bg-gray-100 p-3">{{$user->email}}</td>
+                  <td class="border-gray-light border hover:bg-gray-100 p-3">
+                      <div class="rounded-full w-12 h-12">
+                          <img src="{{asset('storage/avatar/'.($user->avatar??'default_user.png'))}}">
+                      </div>
+                  </td>
+                  <td class="border-gray-light border hover:bg-gray-100 p-3">
+                      <a href="{{route('profile.edit', $user)}}"><x-button class="bg-teal-700">編集</x-button></a>
+                  </td>
+                  <td class="border-gray-light border hover:bg-gray-100 p-3">
+                      <form action="{{route('profile.delete', $user)}}" method="post">
+                        @csrf
+                        @method('delete')
+                        <x-button class="bg-red-700" onclick="return confirm('ユーザーを削除します。よろしいですか？')">削除</x-button>
+                      </form>
+                  </td>
               </tr>
               @endforeach
           </table>

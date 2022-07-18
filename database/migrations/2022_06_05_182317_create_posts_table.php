@@ -16,7 +16,7 @@ class CreatePostsTable extends Migration
         //postsテーブルのカラム設定
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('user_id')->constrained('users'); //外部キーuser_idカラム・・usersテーブルのテーブルのidと連携
+            $table->foreignId('user_id'); //外部キーuser_idカラム・・usersテーブルのテーブルのidと連携
             $table->string('post_name');
             $table->string('title');
             $table->text('body');

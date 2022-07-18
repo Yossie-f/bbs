@@ -58,7 +58,7 @@ class UserPolicy
             return true;
         }
         foreach($user->roles as $role){
-            if($role->name == 'admin'){
+            if($role->role == 'admin'){
                 return true;
             }
         }

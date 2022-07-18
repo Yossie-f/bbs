@@ -40,11 +40,11 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $attr = User::create([
+        $attr = [
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-        ]);
+        ];
 
         if(request()->hasFile('avatar')){
             $name = request()->file('avatar')->getClientOriginalName();

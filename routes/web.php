@@ -49,10 +49,11 @@ Route::middleware(['verified'])->group(function(){
     Route::get('profile/{user}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
 
-    //ユーザー一覧(管理者用画面) : Gate'aadmin'でアクセス制限
+    //ユーザー一覧(管理者用画面) : Gate:'admin'でアクセス制限
     Route::middleware(['can:admin'])->group(function(){
-        //ユーザー一覧を取得
+        //ユーザー一覧のルート
         Route::get('profile.index', [ProfileController::class, 'index'])->name('profile.index');
         //ユーザー削除のルート
+        Route::delete('profile/{user}', [ProfileController::class, 'destroy'])->name('profile.delete');
     });
 });

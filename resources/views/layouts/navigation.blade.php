@@ -67,7 +67,7 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
-            </div>
+            </div> 
 
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">

@@ -35,7 +35,7 @@ class AuthServiceProvider extends ServiceProvider
                     return true;
                 }
             }
-            return abort(403); //adminでなければ403ページを返す。
+            return false; //adminでなければfalseを返しゲートを通れない。
         });
     }
 }

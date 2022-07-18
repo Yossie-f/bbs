@@ -21,6 +21,7 @@ class ProfileController extends Controller
         return view('profile.edit', compact('user'));
     }
 
+
     //プロフィール更新のupdateメソッドにポリシーによるアクセス制限を設定
     public function update(User $user, Request $request){
         $this->authorize('update', $user);
@@ -40,7 +41,7 @@ class ProfileController extends Controller
             $inputs['password']=Hash::make($inputs['password']);    //パスワードが入力されていればハッシュ化する
         }
 
-        //アバターが存在するなら
+        //アバターが存在するなら更新する
         if(isset($inputs['avatar'])) {
             //それがデフォルト画像でないなら、ストレージから古い画像を削除する
             if($user->avatar!=='default_user.png'){
@@ -53,7 +54,22 @@ class ProfileController extends Controller
             request()->file( 'avatar')->storeAs('public/avatar', $avatar);  //パスは 'storage/app/public/avatar' の省略
             $inputs['avatar'] = $avatar;
         }
+
         $user->update($inputs);
         return back()->with('message', '情報を更新しました');
+    }
+
+    //ユーザーを削除するメソッド
+    public function destroy(User $user){
+        
+        //ユーザー情報のアバターがデフォルト画像でなければ、その画像をストレージから先に削除しておく。
+        if($user->avatar!=='default_user.png'){
+            $oldAvatar = 'public/avatar/'.$user->avatar;
+            Storage::delete($oldAvatar);
+        }
+        //ユーザーを削除する
+        $user->delete();
+        //メッセージ情報をwithで添付し、ページをバックする。
+        return back()->with('message', 'ユーザーを削除しました。');
     }
 }
