@@ -63,7 +63,8 @@ class ProfileController extends Controller
 
     //ユーザーを削除するメソッド
     public function destroy(User $user){
-        
+        //ユーザーのroleを全て削除
+        $user->roles()->detach();
         //ユーザー情報のアバターがデフォルト画像でなければ、その画像をストレージから先に削除しておく。
         if($user->avatar!=='default_user.png'){
             $oldAvatar = 'public/avatar/'.$user->avatar;
