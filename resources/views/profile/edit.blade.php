@@ -64,6 +64,66 @@
               </x-button>
           </div>
       </form>
+      
+      @can('admin')
+          <div class="mt-5">
+            <h4 class="mb-3">役割付与・削除（adminユーザーにのみ表示しています）</h4>
+            <table class="text-left w-full border-collapse mt-8">
+                <tr class="bg-green-600 text-center">
+                    <th>役割</th>
+                    <th>付与</th>
+                    <th>削除</th>
+                </tr>
+                @foreach ($roles as $role)
+                    <tr class="bg-white text-center">
+
+                        <td class="p-3">
+                            {{$role->role}}
+                        </td>
+
+                        <td class="p-3">
+                            <form method="post" action="{{route('role.attach', $user)}}">
+                                @csrf
+                                @method('patch')
+                                <input type="hidden" name="role" value="{{$role->id}}">
+                                <button class="px-2 py-1 text-blue-500 border border-blue-500 font-semibold rounded
+                                @if ($user->roles->contains($role))
+                                    bg-gray-300
+                                @endif
+                                    "
+                                @if ($user->roles->contains($role))
+                                    disabled   
+                                @endif
+                                >
+                                    役割付与
+                                </button>
+                            </form>
+                        </td>
+
+                        <td class="p-3">
+                            <form method="post" action="{{route('role.detach', $user)}}">
+                                @csrf
+                                @method('patch')
+                                <input type="hidden" name="role" value="{{$role->id}}">
+                                <button class="px-2 py-1 text-red-500 border border-red-500 font-semibold rounded
+                                @if (!$user->roles->contains($role))
+                                    bg-gray-300
+                                @endif
+                                    "
+                                @if (!$user->roles->contains($role))
+                                    disabled   
+                                @endif
+                                >
+                                 役割削除
+                                </button>
+                            </form>
+                        </td>
+
+                    </tr>
+                @endforeach
+            </table>
+          </div>
+      @endcan
       </div>
   </div>
 </x-app-layout>

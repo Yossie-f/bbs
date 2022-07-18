@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,5 +56,8 @@ Route::middleware(['verified'])->group(function(){
         Route::get('profile.index', [ProfileController::class, 'index'])->name('profile.index');
         //ユーザー削除のルート
         Route::delete('profile/{user}', [ProfileController::class, 'destroy'])->name('profile.delete');
+        //ユーザーへのroleのアタッチとデタッチ
+        Route::patch('roles/{user}/attach', [RoleController::class, 'attach'])->name('role.attach');
+        Route::patch('role/{user}/detach', [RoleController::class, 'detach'])->name('role.detach');
     });
 });

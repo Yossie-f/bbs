@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
@@ -18,7 +19,8 @@ class ProfileController extends Controller
 
     public function edit(User $user){
         $this->authorize('update', $user);
-        return view('profile.edit', compact('user'));
+        $roles = Role::all();       //モデルからroleデータを全て取得する
+        return view('profile.edit', compact('user', 'roles'));  //コンパクト関数でユーザー情報とロール情報をまとめて送る。
     }
 
 
