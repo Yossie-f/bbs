@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100" style="background-color: brown">
+<nav x-data="{ open: false }" class="bg-white border-gray-100 brown-c">
 
     <!-- Primary Navigation Menu -->
 
@@ -14,21 +14,21 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
+                    <x-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')" class="pink-f">
                         HOME
                     </x-nav-link>
-                    <x-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
+                    <x-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')" class="pink-f">
                         新規作成
                     </x-nav-link>
-                    <x-nav-link :href="route('post.mypost')" :active="request()->routeIs('post.mypost')">
+                    <x-nav-link :href="route('post.mypost')" :active="request()->routeIs('post.mypost')" class="pink-f">
                         My投稿
                     </x-nav-link>
-                    <x-nav-link :href="route('post.mycomment')" :active="request()->routeIs('post.mycomment')">
+                    <x-nav-link :href="route('post.mycomment')" :active="request()->routeIs('post.mycomment')" class="pink-f">
                         コメントした投稿
                     </x-nav-link>
                     @can('admin')
-                        <x-nav-link :href="route('profile.index')" :active="request()->routeIs('profile.index')">
-                            ユーザー一覧
+                        <x-nav-link :href="route('profile.index')" :active="request()->routeIs('profile.index')" class="pink-f">
+                            会員一覧
                         </x-nav-link>
                     @endcan
                 </div>
@@ -85,23 +85,23 @@
 
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
+            <x-responsive-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')" class="pink-f">
                 HOME
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
+            <x-responsive-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')" class="pink-f">
                 新規作成
             </x-responsive-nav-link>
-            <x-nav-link :href="route('post.mypost')" :active="request()->routeIs('post.mypost')">
+            <x-nav-link :href="route('post.mypost')" :active="request()->routeIs('post.mypost')" class="pink-f">
                 My投稿
             </x-nav-link>
-            <x-nav-link :href="route('post.mycomment')" :active="request()->routeIs('post.mycomment')">
+            <x-nav-link :href="route('post.mycomment')" :active="request()->routeIs('post.mycomment')" class="pink-f">
                 コメントした投稿
             </x-nav-link>
             {{-- ゲート制限admin: ユーザーの
                 roleがadminならユーザー一覧を表示させる --}}
             @can('admin')
-                <x-nav-link :href="route('profile.index')" :active="request()->routeIs('profile.index')">
-                    ユーザー一覧
+                <x-nav-link :href="route('profile.index')" :active="request()->routeIs('profile.index')" class="pink-f">
+                    会員一覧
                 </x-nav-link> 
             @endcan
         </div>

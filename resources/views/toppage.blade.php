@@ -1,11 +1,11 @@
 <x-guest-layout>
   <div class="h-screen pb-14 bg-right bg-cover">
-      <div class="container pt-10 md:pt-18 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center bg-yellow-50">
+      <div class="max-w-6xl container pt-10 md:pt-18 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center bg-yellow-50">
           <!--左側-->
           <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden ">
-              <h1 class="my-4 text-3xl md:text-5xl text-blue-400 font-bold leading-tight text-center md:text-left slide-in-bottom-h1">Sneakly</h1>
+              <h1 class="my-4 text-3xl md:text-5xl text-blue-400 font-bold leading-tight text-center md:text-left slide-in-bottom-h1">掲示板サイト</h1>
               <p class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left slide-in-bottom-subtitle">
-                  ポリテク滋賀ICT科の訓練生のための掲示板サイトです。勉強や就活に関すること、趣味や息抜きに関すること、活発に情報共有して、より良い未来に繋げていきましょう。
+                  会員制の掲示板サイトです。
               </p>
           
               <p class="text-blue-400 font-bold pb-8 lg:pb-6 text-center md:text-left fade-in">
@@ -19,7 +19,6 @@
                   <a href="{{route('login')}}">
                     <x-button class="btn-set bg-green-600">Myページ</x-button>
                   </a>
-                  
               </div>
               <div class="flex w-full justify-center mt-8 md:justify-start pb-24 lg:pb-0 fade-in">
                 <a href="{{route('contact.create')}}">
@@ -38,8 +37,8 @@
           </div>
           <!--フッタ-->
           <div class="w-full pt-10 pb-6 text-sm md:text-left fade-in" style="background-color: rgb(120, 180, 240)">
-              <p class="text-gray-500 text-center">@2022 このWebサイトは個人が運営する非公式のサイトであり、ポリテクセンター滋賀は運営上一切の関連はありません。</p>
-              <p class="text-gray-500 text-center">Sneakly</p>
+              <p class="text-gray-500 text-center">@2022 
+              <p class="text-gray-500 text-center">掲示板サイト</p>
           </div>
       </div>
   </div>

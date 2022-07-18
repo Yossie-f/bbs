@@ -24,12 +24,11 @@
             
             {{-- navigation.bladeをinclude --}}
             @include('layouts.navigation')
-            この上にナビゲーションが埋め込まれている
 
             <!-- Page Heading -->
             <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 " style="background-color: aqua">
-                    {{ $header }}
+                <div class="w-full mx-auto py-6 px-4 sm:px-6 lg:px-8 brown-c">
+                    {{ $header }}app.blade.php
                 </div>
             </header>
 

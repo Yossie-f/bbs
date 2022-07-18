@@ -7,3 +7,14 @@
   background-color: rgb(50, 149, 50);
   color: snow;
 }
+
+.brown-c{
+  background-color: rgb(180, 40, 40);
+  color: rgb(229, 168, 166);
+}
+
+.pink-f{
+  color: rgb(229, 168, 166);
+  font-size: medium;
+  font-weight: bold;
+}

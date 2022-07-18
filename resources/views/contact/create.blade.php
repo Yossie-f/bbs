@@ -1,6 +1,6 @@
 <x-guest-layout>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-yellow-50 h-screen">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 bg-yellow-50 h-screen">
       <div class="mx-4 sm:p-8">
           <h1 class="text-xl text-gray-700 font-semibold hover:underline cursor-pointer">
               お問い合わせ
@@ -25,7 +25,7 @@
               </div>
 
               <div class="w-full flex flex-col">
-                  <label for="text" class="font-semibold leading-none mt-4">本文</label>
+                  <label for="text" class="font-semibold leading-none mt-4">お問い合せ内容</label>
                   <textarea name="text" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="text" cols="30" rows="10" placeholder="お問合せ内容を入力してください">{{old('text')}}</textarea>
               </div>
 
