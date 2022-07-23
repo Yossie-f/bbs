@@ -26,14 +26,14 @@
             @include('layouts.navigation')
 
             <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="w-full mx-auto py-6 px-4 sm:px-6 lg:px-8 brown-c">
-                    {{ $header }}app.blade.php
+            <header class="">
+                <div class="w-full mx-auto py-6 pl-8 bg-gradient-to-r from-blue-400">
+                    {{ $header }}
                 </div>
             </header>
 
             <!-- Page Content -->
-            <main style="background-color: rgb(224, 137, 137);">
+            <main class="bg-gradient-to-r from-blue-400">
                 {{ $slot }}
             </main>
         </div>

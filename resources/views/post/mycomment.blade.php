@@ -21,7 +21,7 @@
             <div class="mt-4">
               <div class="text-sm font-semibold flex flex-row-reverse">
                 {{-- diffForHumans()メソッド：今の時間から逆算した時間を表示する。対象にアロー演算子をつけ表示形式を変更している--}}
-                <p>投稿者：{{$post->user->name}} ・ 投稿名：{{$post->post_name}} ・ 日時：{{$post->created_at->diffForHumans()}}</p>
+                <p>投稿者名：{{$post->post_name}} ・ 日時：{{$post->created_at->diffForHumans()}}</p>
               </div>
               
               <h1 class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer float-left pt-4">
@@ -46,7 +46,7 @@
                 <span>コメントはまだありません。</span>
               @endif
               <a href="{{route('post.show', $post)}}" style="color:white;">
-                <x-button class="float-right" >コメントする</x-button>
+                <x-button class="float-right bg-teal-600" >コメントする</x-button>
               </a>
 
             </div>

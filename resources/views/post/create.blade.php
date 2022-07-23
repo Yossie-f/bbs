@@ -14,7 +14,7 @@
       {{-- フォーム部分 action属性にはルート名を指定する --}}
       <form method="post" action="{{route('post.store')}}" enctype="multipart/form-data">
         @csrf
-        <div class="md:flex items-center mt-8">
+        <div class="md:flex items-center">
           <div class="w-full flex flex-col">
             <label for="post_name" class="font-semibold leading-none mt-4">投稿者名</label>
             <input type="text" name="post_name" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="post_name" placeholder="投稿者名を入力" value="{{old('post_name')}}">
@@ -47,7 +47,7 @@
           </div>
         </div>
         
-        <x-button class="mt-4">
+        <x-button class="mt-4 bg-teal-600">
           送信する
         </x-button>
         

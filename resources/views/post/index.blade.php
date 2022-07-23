@@ -1,6 +1,6 @@
 <x-app-layout>
   <x-slot name="header">
-    <h2 class="font-semibold text-xl text-gray-800 leading-tight brown-c">投稿の一覧</h2>
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight ">投稿の一覧</h2>
     <x-message :message="session('message')"/>
   </x-slot>
 
@@ -8,7 +8,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     @foreach ($posts as $post)
       <div class="mx-6 sm:p-8">
-        <div class="mt-2">
+        <div class="p-1">
           <div class="bg-white w-full rounded-2xl px-10 py-12 shadow-lg hover:shadow-2xl transition duration-600">
             <div class="">
               <div class="flex">
@@ -42,7 +42,7 @@
               <span>コメントはまだありません。</span>
             @endif
             <a href="{{route('post.show', $post)}}" style="color:white;">
-              <x-button class="float-right" >コメントする</x-button>
+              <x-button class="float-right bg-teal-600" >コメントする</x-button>
             </a>
           </div>
         </div>

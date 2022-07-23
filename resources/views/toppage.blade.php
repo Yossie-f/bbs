@@ -1,44 +1,34 @@
 <x-guest-layout>
-  <div class="h-screen pb-14 bg-right bg-cover">
-      <div class="max-w-6xl container pt-10 md:pt-18 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center bg-yellow-50">
-          <!--左側-->
-          <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden ">
-              <h1 class="my-4 text-3xl md:text-5xl text-blue-400 font-bold leading-tight text-center md:text-left slide-in-bottom-h1">掲示板サイト</h1>
-              <p class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left slide-in-bottom-subtitle">
-                  会員制の掲示板サイトです。
-              </p>
-          
-              <p class="text-blue-400 font-bold pb-8 lg:pb-6 text-center md:text-left fade-in">
-                  まだ会員登録してない方は登録ボタンから。
-              </p>
-              <div class="flex w-full justify-center md:justify-start pb-24 lg:pb-0 fade-in ">
-                  {{-- x-buttonコンポーネント --}}
-                  <a href="{{route('register')}}">
-                   <x-button class="btn-set bg-red-700">会員登録</x-button>
-                  </a>
-                  <a href="{{route('login')}}">
-                    <x-button class="btn-set bg-green-600">Myページ</x-button>
-                  </a>
-              </div>
-              <div class="flex w-full justify-center mt-8 md:justify-start pb-24 lg:pb-0 fade-in">
-                <a href="{{route('contact.create')}}">
-                  <x-button class="btn-set-gray">お問合せはこちら</x-button>
-                </a>
-              </div>
-          </div>
-          {{-- 右側 --}}
-          <div class="w-full xl:w-3/5 py-6 overflow-y-hidden">
+    <div class="h-screen pb-14 bg-right bg-cover w-full">
+        <div class="w-full container pt-10 md:pt-18 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center bg-yellow-50">
+
+            <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden ">
+                <h1 class="my-4 text-3xl md:text-5xl text-blue-400 font-bold leading-tight text-center md:text-left">掲示板</h1>
+                <p class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left slide-in-bottom-subtitle">会員制の掲示板サイトです</p>
+                <p class="text-blue-400 font-bold pb-8 lg:pb-6 text-center md:text-left fade-in">まだ会員登録してない方は登録ボタンから</p>
+                <div class="flex w-full justify-center md:justify-start  fade-in ">
+                    <a href="{{route('register')}}">
+                        <x-button class="btn-set bg-red-600 hover:animate-pulse">会員登録</x-button>
+                    </a>
+                    <a href="{{route('login')}}">
+                        <x-button class="btn-set bg-teal-600 hover:animate-pulse">ログイン</x-button>
+                    </a>
+                </div>
+                <div class="flex w-full justify-center mt-2 md:justify-start pb-24 lg:pb-0 fade-in">
+                    <a href="{{route('contact.create')}}">
+                        <x-button class="btn-set-gray">お問合せ</x-button>
+                    </a>
+                </div>
+            </div>
+
+          <div class="w-full  py-6 overflow-y-hidden">
               <img class="w-5/6 mx-auto lg:mr-0 slide-in-bottom rounded-lg shadow-xl" src="{{asset('logo/22761504.png')}}">
           </div>
       </div>
       <div class="container pt-10 md:pt-18 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">
-          <div class="w-full text-sm text-center md:text-left fade-in border-2 p-4 text-red-800 leading-8 mb-8">
-              <P> ここは色々いれてください。</p>
-          </div>
-          <!--フッタ-->
           <div class="w-full pt-10 pb-6 text-sm md:text-left fade-in" style="background-color: rgb(120, 180, 240)">
               <p class="text-gray-500 text-center">@2022 
-              <p class="text-gray-500 text-center">掲示板サイト</p>
+              <p class="text-gray-500 text-center">掲示板</p>
           </div>
       </div>
   </div>
