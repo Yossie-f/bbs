@@ -44,6 +44,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    //categoriesテーブルとのリレーションメソッド categories()
+    public function categories(){
+        return $this->hasMany(Category::class);
+    }
+    
     //postsテーブルとのリレーションメソッド posts()
     public function posts(){
         return $this->hasMany(Post::class);

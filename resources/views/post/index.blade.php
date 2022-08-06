@@ -19,6 +19,9 @@
                   <a href="{{route('post.show', $post)}}">{{ $post->title }}</a>
                 </h1>
                 {{-- タイトル表示部分をアンカータグとし、遷移先はpost.showルート、リクエストパラメータとして$postを渡す --}}
+                <div class="text-sm font-semibold flex flex-row-reverse">
+                  <p>カテゴリー：{{ $post->category->category_name}}</p>
+                </div>
               </div>
             </div>
             <hr class="w-full">

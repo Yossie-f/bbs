@@ -637,6 +637,10 @@ select {
 .relative {
   position: relative;
 }
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
 .left-0 {
   left: 0px;
 }
@@ -1421,7 +1425,7 @@ select {
 .btn-set-gray {
   margin-right: 1rem;
   --tw-bg-opacity: 1;
-  background-color: rgb(75 85 99 / var(--tw-bg-opacity));
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
   text-align: center;
   font-size: 1rem;
   line-height: 1.5rem;

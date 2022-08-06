@@ -15,6 +15,7 @@ class Post extends Model
         'user_id',
         'post_name',
         'title',
+        'category_id',
         'body',
         'image',
         'url',
@@ -22,12 +23,17 @@ class Post extends Model
 
     //usersテーブルとのリレーションメソッド user()
     public function user(){
-        //user : post = 1 : 多
-        return $this->belongsTo(User::class);   
+        return $this->belongsTo(User::class);
+    }
+
+    //category : post = 1 : 多
+    public function category(){
+        return $this->belongsTo(Category::class);   
     }
 
     //commentsテーブルとのリレーションメソッド comments()
     public function comments(){
         return $this->hasMany(Comment::class);
     }
+    
 }
