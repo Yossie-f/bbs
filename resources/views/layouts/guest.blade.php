@@ -16,11 +16,12 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
+
     <body>
         <div class="w-full mx-auto font-sans text-gray-900 antialiased">
-            <div class="w-full container mx-auto p-6" style="background-color:brown;">
+            <div class="w-full mx-auto p-6" style="background-color:brown;">
                 <div class="w-full flex items-center justify-between">
-                    <h1 class="text-4xl ">ようこそ</h1>
+                    <h1 class="ml-4 text-teal-500 md:text-4xl text-3xl font-semibold ">Welcome To GuestPage !!</h1>
                     <a href="{{route('toppage')}}">
                         <img src="{{asset('logo/フクロウ博士_本好き.png')}}" style="max-height: 80px;">
                     </a>

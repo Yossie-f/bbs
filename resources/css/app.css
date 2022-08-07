@@ -7,6 +7,6 @@
 }
 
 .btn-set-gray {
-  @apply mr-4 font-bold text-base text-center bg-gray-200;
+  @apply mr-4 font-bold text-base text-center bg-gray-500;
 }
 
