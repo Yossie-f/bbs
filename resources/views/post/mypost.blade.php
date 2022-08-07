@@ -5,15 +5,15 @@
   </x-slot>
 
   {{-- 投稿一覧表示用のコード --}}
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto sm:px-4 lg:px-8">
     @if(count($posts) == 0)
-      <p class="mt-4">投稿はまだありません。</p>
+      <p class="ml-2">投稿はまだありません。</p>
     @else
-    <p>投稿は{{count($posts)}}件です</p>
+    <p class="ml-2">投稿は{{count($posts)}}件です</p>
 
     {{-- 投稿表示開始 --}}
     @foreach ($posts as $post)
-    <div class="mx-6 sm:p-8">
+    <div class="mx-3  md:mx-6 sm:p-8">
       <div class="p-1">
         <div class="bg-white w-full rounded-2xl px-10 py-8 shadow-lg hover:shadow-2xl transition duration-600">
           <div class="">
@@ -47,7 +47,7 @@
             @if($post->comments->count())
             <span class="badge">返信 {{ $post->comments->count() }}件</span>
             @else
-            <span>コメントはまだありません。</span>
+            <span></span>
             @endif
             <a href="{{route('post.show', $post)}}" style="color:white;">
               <x-button class="float-right bg-teal-600" >コメントする</x-button>

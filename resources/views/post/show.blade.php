@@ -8,9 +8,9 @@
     <x-message :message="session('message')"></x-message>
   </x-slot>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="mx-4 sm:p-8">
-      <div class="px-10 mt-4">
+  <div class="max-w-7xl mx-auto px-1 sm:px-6 lg:px-8">
+    <div class="mx-2 sm:p-4 md:px-8">
+      <div class="px-1 pt-1 md:px-8 md:pt-6">
         <div class="bg-white w-full rounded-2xl px-10 py-8 shadow-lg hover:shadow-2xl transition duration-500">
           <div class="mt-4">
             <h1 class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer">
@@ -32,9 +32,9 @@
           </div>
 
           <div>
-            <p class="mt-4 text-gray-600 py-4">{{$post->body}}</p>
+            <p class="mt-1 md:mt-4 text-gray-600 py-2 md:py-4">{{$post->body}}</p>
             @if($post->image)
-              <div>
+              <div class="w-full">
                 (画像ファイル:{{$post->image}})
               </div>
               <img src="{{asset('storage/images/'.$post->image)}}" class="mx-auto" style="height:300px;">
@@ -59,10 +59,10 @@
             <form method="post" action="{{route('comment.store')}}">
               @csrf
               <input type="hidden" name="post_id" value="{{$post->id}}">
-              <label for="comment_name">名前</label>
-              <input type="text" name="comment_name" value="{{Auth::user()->name}}" class="rounded-2xl border border-gray-300">
+              <label for="comment_name"></label>
+              <input type="text" name="comment_name" value="{{Auth::user()->name}}" class="w-full rounded-2xl border border-gray-300">
               <textarea name="body" class="bg-white w-full rounded-2xl px-4 mt-4 py-4 border border-gray-300 shadow-lg hover:shadow-2xl transition duration-500" id="body" cols="30" rows="3" placeholder="コメントを入力してください">{{old('body')}}</textarea>
-              <x-button class="float-right mr-4 mb-12 bg-teal-600">コメントする</x-button>
+              <x-button class="float-right mt-2 mr-4 mb-12 bg-teal-600 ">コメントする</x-button>
             </form>
           </div>
 

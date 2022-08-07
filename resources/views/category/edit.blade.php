@@ -14,8 +14,8 @@
           @csrf
           @method('patch')
           <div class="flex">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">項目の内容を編集する</h2>
-            <h3 class="font-semibold text-base text-gray-600 leading-tight ml-4 pt-1">※編集中の項目：{{$category->category_name}}</h3>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">編集する</h2>
+            <h3 class="font-semibold text-base text-gray-600 leading-tight ml-4 pt-1">※現在の名前：{{$category->category_name}}</h3>
           </div>
           <div class="md:flex items-center ">
             <div class="w-full flex flex-col">
@@ -29,7 +29,7 @@
             <textarea name="summary" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="summary" cols="30" rows="10">{{$category->summary}}</textarea>
           </div>
           
-          <x-button class="mt-4 bg-teal-600">
+          <x-button class="mt-4 mb-12 bg-teal-600">
             変更を確定
           </x-button>
           

@@ -15,14 +15,14 @@
         <form method="post" action="{{route('post.update', $post)}}" enctype="multipart/form-data">
           @csrf
           @method('patch')
-          <div class="md:flex items-center mt-8">
+          <div class="md:flex items-center">
             <div class="w-full flex flex-col">
               <label for="post_name" class="font-semibold leading-none mt-4">投稿者名</label>
               <input type="text" name="post_name" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="post_name" placeholder="投稿者名を入力" value="{{old('post_name', $post->post_name)}}">
             </div>
           </div>
 
-          <div class="md:flex items-center mt-8 grid grid-cols-8 gap-4 content-start ">
+          <div class="md:flex items-center sm:mt-4 grid grid-cols-8 gap-4 content-start ">
             <div class="flex flex-col col-span-6 ">
               <label for="category_id" class="font-semibold leading-none mt-4">カテゴリー</label>
               <select name="category_id" class="w-auto py-2  border border-gray-300 rounded-md" id="category_id"  required>
@@ -36,13 +36,13 @@
               </select>
             </div>
             <x-nav-link :href="route('category.create')"  class=" text-teal-500 text-base font-semibold">
-              カテゴリーを追加
+              追加
             </x-nav-link>
           </div>
   
           <div class="md:flex items-center mt-8">
             <div class="w-full flex flex-col">
-              <label for="title" class="font-semibold leading-none mt-4">件名</label>
+              <label for="title" class="font-semibold leading-none sm:mt-4">件名</label>
               <input type="text" name="title" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="title" placeholder="タイトルを入力" value="{{old('title', $post->title)}}">
             </div>
           </div>
@@ -66,14 +66,14 @@
           </div>
   
           <div class="w-full flex flex-col">
-            <label for="image" class="font-semibold leading-none mt-4">リンク</label>
-            <div>
-              <input id="url" type="url" name="url" value="{{old('url', $post->url)}}" placeholder="URLを入力">
+            <label for="image" class="font-semibold leading-none mt-4 ">リンク</label>
+            <div >
+              <input class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="url" type="url" name="url" value="{{old('url', $post->url)}}" placeholder="URLを入力">
             </div>
           </div>
           
-          <x-button class="mt-4">
-            変更を保存する
+          <x-button class="mt-4 mb-12 bg-teal-600">
+            変更を保存
           </x-button>
           
         </form>

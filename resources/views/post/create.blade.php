@@ -10,7 +10,7 @@
   </x-slot>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="mx-4 sm:p-8">
+    <div class="mx-4 pb-2 sm:p-8">
       
       {{-- フォーム部分 action属性にはルート名を指定する --}}
       <form method="post" action="{{route('post.store')}}" enctype="multipart/form-data">
@@ -35,7 +35,7 @@
             </select>
           </div>
           <x-nav-link :href="route('category.create')"  class=" text-teal-500 text-base font-semibold">
-            カテゴリーを追加
+            追加
           </x-nav-link>
         </div>
 
@@ -65,7 +65,7 @@
           </div>
         </div>
         
-        <x-button class="mt-4 bg-teal-600">
+        <x-button class="mt-4 mb-12 bg-teal-600">
           送信する
         </x-button>
         

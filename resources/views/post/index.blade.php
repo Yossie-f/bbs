@@ -6,7 +6,7 @@
 
   {{-- カテゴリ一覧 --}}
   <div class="sm:flex sm:items-center sm:ml-6">
-    <x-dropdown align="left" width="96" z="0">
+    <x-dropdown align="left" width="64" z="0">
         <x-slot name="trigger">
             <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                 <div class="ml-12 text-lg text-white hover:text-gray-700 hover:animation-pulse hover:font-semibold ">
@@ -36,13 +36,12 @@
     </x-dropdown>
   </div> 
   
-  
   {{-- 投稿一覧表示用のコード --}}
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto sm:px-4 lg:px-8">
     @foreach ($posts as $post)
-      <div class="mx-6 sm:p-8">
+      <div class="mx-4  md:mx-6 sm:p-8">
         <div class="p-1">
-          <div class="bg-white w-full rounded-2xl px-10 py-8 shadow-lg hover:shadow-2xl transition duration-600">
+          <div class="bg-white w-full rounded-2xl px-5 md:px-10 py-8 shadow-lg hover:shadow-2xl transition duration-600">
             <div class="">
               <div class="flex w-full place-content-between">
                 <div class="flex">
@@ -58,7 +57,7 @@
             </div>
             <hr class="w-full">
             {{-- 本文(body)表示部 : 150字以上は...で非表示にする --}}
-            <p class="mt-4 text-gray-600 py-4">{{Str::limit($post->body, 150, '...')}}</p>      
+            <p class="mt-4 text-gray-600 py-4">{{Str::limit($post->body, 100, '...')}}</p>      
                      
             @if (!empty($post->url))
               <h1 class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer float-left pt-4">URL:<a href="{{$post->url}}" style="color:rgb(86, 160, 160);">{{$post->url}}</a></h1>  
@@ -78,10 +77,10 @@
                 返信 {{ $post->comments->count() }}件
               </span>
             @else
-              <span>コメントはまだありません。</span>
+              <span></span>
             @endif
             <a href="{{route('post.show', $post)}}" style="color:white;">
-              <x-button class="float-right bg-teal-600" >コメントする</x-button>
+              <x-button class="float-right bg-teal-600 my-2" >コメントする</x-button>
             </a>
           </div>
         </div>

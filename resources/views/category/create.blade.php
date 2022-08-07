@@ -14,7 +14,7 @@
       {{-- 現在のカテゴリーリスト --}}
       <div class="mx-4 sm:p-8">
         <div class="flex">
-          <h2 class="font-semibold text-xl text-gray-800 leading-tight">カテゴリーを編集</h2>
+          <h2 class="font-semibold text-xl text-gray-800 leading-tight">編集する</h2>
           <h3 class="font-semibold text-sm text-gray-500 leading-tight ml-4 pt-1">※クリックして編集</h3>
         </div>
         <div class="w-full grid grid-cols-6 gap-4 content-center mt-2">
@@ -24,7 +24,7 @@
         </div>
       </div>
 
-      <div class="mx-4 sm:p-8">
+      <div class="mt-12 mx-4 sm:p-8">
         <form method="post" action="{{route('category.store')}}" enctype="multipart/form-data">
           @csrf
           <h2 class="font-semibold text-xl text-gray-800 leading-tight">カテゴリーの追加</h2>
@@ -40,7 +40,7 @@
             <textarea name="summary" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="summary" cols="30" rows="10">{{old('summary')}}</textarea>
           </div>
           
-          <x-button class="mt-4 bg-teal-600">
+          <x-button class="mb-6 mt-4 bg-teal-600">
             追加する
           </x-button>
           

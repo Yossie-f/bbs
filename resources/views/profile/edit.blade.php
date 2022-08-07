@@ -59,8 +59,8 @@
           </div>
 
           <div class="flex items-center justify-end mt-4">
-              <x-button class="ml-4">
-                  {{ __('送信する') }}
+              <x-button class="ml-4 bg-red-600">
+                  {{ __('変更する') }}
               </x-button>
           </div>
       </form>
