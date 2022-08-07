@@ -1693,6 +1693,10 @@ select {
           animation: bounce 1s infinite;
 }
 
+.hover\:rounded-lg:hover {
+  border-radius: 0.5rem;
+}
+
 .hover\:border-b-4:hover {
   border-bottom-width: 4px;
 }
@@ -1771,6 +1775,11 @@ select {
 }
 
 .hover\:text-indigo-500:hover {
+  --tw-text-opacity: 1;
+  color: rgb(99 102 241 / var(--tw-text-opacity));
+}
+
+.hover\:hover\:text-indigo-500:hover:hover {
   --tw-text-opacity: 1;
   color: rgb(99 102 241 / var(--tw-text-opacity));
 }

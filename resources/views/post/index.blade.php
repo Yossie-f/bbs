@@ -26,7 +26,7 @@
           <div class="grid grid-cols-8 gap-1 z-0 ">
             @foreach($categories as $category)
             <div class="m-2 bg-indigo-500 col-start-2 col-span-6 rounded-lg">
-              <x-dropdown-link :href="route('post.category', $category)" class="text-center text-white hover:text-indigo-500 text-base font-semibold">
+              <x-dropdown-link :href="route('post.category', $category)" class="text-center text-white hover:bg-indigo-300 hover:rounded-lg hover:text-indigo-500 text-base font-semibold">
                 {{$category->category_name}}
               </x-dropdown-link>
             </div>
