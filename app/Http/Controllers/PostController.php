@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;            //Postモデルクラスをインポート
 use App\Models\Comment;         
 use Illuminate\Http\Request;    //Requestクラスをインポート
@@ -10,11 +11,7 @@ use Illuminate\Support\Facades\Storage; //投稿画像削除のためにイン�
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         //Postモデルに紐づいたテーブルのデータを全て取得し$postsに代入
@@ -23,36 +20,32 @@ class PostController extends Controller
         $posts = Post::orderBy('created_at', 'desc')->get();
         //auth()でログイン中のユーザー情報を取得し$userに代入
         $user = auth()->user();
+
+        $categories = Category::orderBy('id')->get();
+        
         //ルート名 post.index に、取得した情報をcompactメソッドで、連想配列として渡す
-        return view('post.index', compact('posts', 'user'));
+        return view('post.index', compact('posts', 'user','categories'));
     }
 
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //adminユーザーしかcreateメソッドを使用しないように制限するコード
         // Gate::authorize('admin'); 
-        return view("post.create");
+        $categories = Category::orderBy('id')->get();
+        return view("post.create", compact('categories'));
     }
 
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     // データの保存メソッド store
     public function store(Request $request)
     {
         //リクエストパラメータごとにバリデーションの設定
         $inputs = $request->validate([
             'post_name' => 'required|string|max:30',
+            'category_id' => 'required',
             'title'=>'required|max:50',
             'body'=>'required|string|max:200',
             'image'=>'image|max:10240',
@@ -63,6 +56,7 @@ class PostController extends Controller
         //Postクラスのフィールドにリクエストパラメータを代入
         $post->user_id = auth()->user()->id;
         $post->post_name = $request->post_name;
+        $post->category_id = $request->category_id;
         $post->title = $request->title;
         $post->body = $request->body;
         $post->url = $request->url;
@@ -84,38 +78,23 @@ class PostController extends Controller
     }
 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Post $post)  //引数にPostクラスの$postを受け取る
     {
         return view('post.show', compact('post')); //showのビューにpostの情報を渡す
     }
 
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Post $post)
     {
         $this->authorize('update', $post);
-        return view('post.edit', compact('post'));
+        $categories=Category::all();
+        return view('post.edit', compact('post', 'categories'));
     }
 
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Post $post)
     {
         $this->authorize('update', $post);
@@ -151,12 +130,7 @@ class PostController extends Controller
     }
 
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Post $post)
     {
         $this->authorize('delete', $post);
@@ -188,5 +162,12 @@ class PostController extends Controller
         $comments=Comment::where('user_id', $user)->orderBy('created_at', 'desc')->get();
         $comments=$comments->unique('post_id');
         return view('post.mycomment', compact('comments'));
+    }
+
+    //選択したカテゴリーの投稿だけ表示させるメソッド
+    public function category(Request $request){
+        $posts=Post::where('category_id', $request->id)->orderBy('created_at', 'desc')->get();
+        $category=Category::where('id', $request->id)->first();
+        return view('post.category', compact('posts', 'category'));
     }
 }

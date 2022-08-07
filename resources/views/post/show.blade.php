@@ -20,7 +20,7 @@
           </div>
           <div class="flex justify-end mt-4">
             @can('update', $post)
-             <a href="{{route('post.edit', $post)}}"><x-button class="bg-teal-700 float-right">編集</x-button></a>
+             <a href="{{route('post.edit', $post)}}"><x-button class="bg-teal-600 float-right">編集</x-button></a>
             @endcan
             @can('delete', $post)
             <form method="post" action="{{route('post.destroy', $post)}}">
@@ -46,22 +46,23 @@
 
           {{-- コメント表示 --}}
             @foreach($post->comments as $comment)
-            <div class="bg-white w-full rounded-2xl px-10 py-8 shadow-lg hover:shadow-2xl transition duration-500 mt-8">
+            <div class="bg-white w-full rounded-2xl px-6 py-6 shadow-lg hover:shadow-2xl transition duration-500 mt-6">
               {{$comment->body}}
-              <div class="text-sm font-semibold flex flex-row-reverse">
+              <div class="px-3 text-sm font-semibold flex flex-row-reverse">
                 <p>{{$comment->comment_name}}・{{$comment->created_at->diffForHumans()}}</p>
               </div>
             </div>
             @endforeach
 
           {{-- コメント新規作成 --}}
-          <div class="mt-4 mb-12">
+          <div class="mt-8 mb-12">
             <form method="post" action="{{route('comment.store')}}">
               @csrf
               <input type="hidden" name="post_id" value="{{$post->id}}">
-              <input type="text" name="comment_name" value="{{$post->comment_name}}">
-              <textarea name="body" class="bg-white w-full rounded-2xl px-4 mt-4 py-4 shadow-lg hover:shadow-2xl transition duration-500" id="body" cols="30" rows="3" placeholder="コメントを入力してください">{{old('body')}}</textarea>
-              <x-button class="float-right mr-4 mb-12">コメントする</x-button>
+              <label for="comment_name">名前</label>
+              <input type="text" name="comment_name" value="{{Auth::user()->name}}" class="rounded-2xl border border-gray-300">
+              <textarea name="body" class="bg-white w-full rounded-2xl px-4 mt-4 py-4 border border-gray-300 shadow-lg hover:shadow-2xl transition duration-500" id="body" cols="30" rows="3" placeholder="コメントを入力してください">{{old('body')}}</textarea>
+              <x-button class="float-right mr-4 mb-12 bg-teal-600">コメントする</x-button>
             </form>
           </div>
 

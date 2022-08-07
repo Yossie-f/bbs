@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -38,13 +39,21 @@ Route::controller(ContactFormController::class)->group(function(){
 
 //ログイン後のユーザー画面
 Route::middleware(['verified'])->group(function(){
+
     //自分の投稿,コメント
     Route::get('post/mypost', [PostController::class, 'mypost'])->name('post.mypost');
     Route::get('post/mycomment', [PostController::class, 'mycomment'])->name('post.mycomment');
+    //カテゴリー別投稿
+    Route::get('post/category/{id}', [PostController::class, 'category'])->name('post.category');
+
+
     //投稿
     Route::resource('post', PostController::class);
     //コメント
     Route::resource('comment', CommentController::class);
+    //カテゴリー
+    Route::resource('category', CategoryController::class);
+
     
     // //ユーザー情報の更新画面
     Route::get('profile/{user}/edit', [ProfileController::class, 'edit'])->name('profile.edit');

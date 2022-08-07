@@ -1,8 +1,8 @@
-<nav x-data="{ open: false }" class="bg-white border-gray-100 brown-c sticky top-0">
+<nav x-data="{ open: false }" class=" border-gray-100 brown-c sticky top-0 z-50">
 
     <!-- Primary Navigation Menu -->
 
-    <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="w-full mx-auto px-4 pt-2  sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -18,10 +18,10 @@
                         HOME
                     </x-nav-link>
                     <x-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')" class=" text-base font-semibold">
-                        新規作成
+                        投稿する
                     </x-nav-link>
                     <x-nav-link :href="route('post.mypost')" :active="request()->routeIs('post.mypost')" class=" text-base font-semibold">
-                        My投稿
+                        あなたの投稿
                     </x-nav-link>
                     <x-nav-link :href="route('post.mycomment')" :active="request()->routeIs('post.mycomment')" class=" text-base font-semibold">
                         コメントした投稿
@@ -89,10 +89,10 @@
                 HOME
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')" class=" text-base font-semibold border-b-2">
-                新規作成
+                投稿する
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('post.mypost')" :active="request()->routeIs('post.mypost')" class=" text-base font-semibold border-b-2">
-                My投稿
+                あなたの投稿
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('post.mycomment')" :active="request()->routeIs('post.mycomment')" class=" text-base font-semibold border-b-2">
                 コメントした投稿
