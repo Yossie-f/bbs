@@ -22,7 +22,7 @@
             </div>
 
           <div class="w-full  py-6 overflow-y-hidden">
-              <img class="w-5/6 mx-auto lg:mr-0 slide-in-bottom rounded-lg shadow-xl" src="{{asset('logo/22761504.png')}}">
+              <img class="w-5/6 mx-auto lg:mr-0 slide-in-bottom rounded-lg " src="{{asset('logo/22761504.png')}}">
           </div>
       </div>
       <div class=" pt-10 md:pt-18 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">

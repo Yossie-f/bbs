@@ -19,21 +19,21 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
 
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+    <body class=" w-full h-full font-sans antialiased">
+        <div class=" w-full bg-gray-100">
             
             {{-- navigation.bladeをinclude --}}
             @include('layouts.navigation')
 
             <!-- Page Heading -->
-            <header class="">
+            <header class="w-full ">
                 <div class="w-full mx-auto py-6 pl-8 bg-gradient-to-r from-blue-400">
                     {{ $header }}
                 </div>
             </header>
 
             <!-- Page Content -->
-            <main class="bg-gradient-to-r from-blue-400">
+            <main class="w-full h-full pb-10 bg-gradient-to-r from-blue-400">
                 {{ $slot }}
             </main>
         </div>

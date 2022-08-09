@@ -35,7 +35,7 @@
                 @endforeach
               </select>
             </div>
-            <x-nav-link :href="route('category.create')"  class=" text-teal-500 text-base font-semibold">
+            <x-nav-link :href="route('category.create')"  class="mt-6 text-teal-500 text-base font-semibold">
               追加
             </x-nav-link>
           </div>
